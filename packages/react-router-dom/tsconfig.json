@@ -15,6 +15,7 @@
 
     "skipLibCheck": true,
     "baseUrl": "./",
+    "outDir": ".",
 
     // Needed for the more-strict pnpm setup, can be removed in v7 since we'll
     // be collapsing the lifted server file into the main package export
