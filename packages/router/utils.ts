@@ -524,6 +524,7 @@ export function matchRoutesImpl<
   basename: string,
   allowPartial: boolean
 ): AgnosticRouteMatch<string, RouteObjectType>[] | null {
+  debugger
   let location =
     typeof locationArg === "string" ? parsePath(locationArg) : locationArg;
 

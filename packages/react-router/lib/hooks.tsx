@@ -444,6 +444,7 @@ export function useRoutesImpl(
     remainingPathname = "/" + segments.slice(parentSegments.length).join("/");
   }
 
+  debugger;
   let matches = matchRoutes(routes, { pathname: remainingPathname });
 
   if (__DEV__) {
@@ -462,6 +463,7 @@ export function useRoutesImpl(
         `null value by default resulting in an "empty" page.`
     );
   }
+  debugger;
 
   let renderedMatches = _renderMatches(
     matches &&

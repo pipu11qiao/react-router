@@ -13,9 +13,10 @@
     "declaration": true,
     "emitDeclarationOnly": true,
 
+    "baseUrl": "./",
     "skipLibCheck": true,
-
-    "outDir": ".",
-    "rootDir": "."
+    "paths": {
+      "@remix-run/router": ["../../packages/router/index.ts"]
+    }
   }
 }

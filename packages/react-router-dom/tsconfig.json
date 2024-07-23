@@ -14,13 +14,13 @@
     "emitDeclarationOnly": true,
 
     "skipLibCheck": true,
-
-    "outDir": ".",
-    "rootDir": ".",
+    "baseUrl": "./",
 
     // Needed for the more-strict pnpm setup, can be removed in v7 since we'll
     // be collapsing the lifted server file into the main package export
     "paths": {
+      "@remix-run/router": ["../../packages/router/index.ts"],
+      "react-router": ["../../packages/react-router/index.ts"],
       "react-router-dom": ["./index.tsx"]
     }
   }

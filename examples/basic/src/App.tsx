@@ -33,6 +33,7 @@ export default function App() {
 }
 
 function Layout() {
+  debugger
   return (
     <div>
       {/* A "layout route" is a good place to put markup you want to
