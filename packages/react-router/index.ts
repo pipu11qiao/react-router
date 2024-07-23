@@ -239,15 +239,6 @@ function mapRouteProperties(route: RouteObject) {
   };
 
   if (route.Component) {
-    if (__DEV__) {
-      if (route.element) {
-        warning(
-          false,
-          "You should not include both `Component` and `element` on your route - " +
-            "`Component` will be used."
-        );
-      }
-    }
     Object.assign(updates, {
       element: React.createElement(route.Component),
       Component: undefined,
@@ -255,15 +246,6 @@ function mapRouteProperties(route: RouteObject) {
   }
 
   if (route.HydrateFallback) {
-    if (__DEV__) {
-      if (route.hydrateFallbackElement) {
-        warning(
-          false,
-          "You should not include both `HydrateFallback` and `hydrateFallbackElement` on your route - " +
-            "`HydrateFallback` will be used."
-        );
-      }
-    }
     Object.assign(updates, {
       hydrateFallbackElement: React.createElement(route.HydrateFallback),
       HydrateFallback: undefined,
@@ -271,15 +253,6 @@ function mapRouteProperties(route: RouteObject) {
   }
 
   if (route.ErrorBoundary) {
-    if (__DEV__) {
-      if (route.errorElement) {
-        warning(
-          false,
-          "You should not include both `ErrorBoundary` and `errorElement` on your route - " +
-            "`ErrorBoundary` will be used."
-        );
-      }
-    }
     Object.assign(updates, {
       errorElement: React.createElement(route.ErrorBoundary),
       ErrorBoundary: undefined,

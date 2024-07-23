@@ -80,21 +80,12 @@ export interface DataRouterContextObject
 
 export const DataRouterContext =
   React.createContext<DataRouterContextObject | null>(null);
-if (__DEV__) {
-  DataRouterContext.displayName = "DataRouter";
-}
 
 export const DataRouterStateContext = React.createContext<
   Router["state"] | null
 >(null);
-if (__DEV__) {
-  DataRouterStateContext.displayName = "DataRouterState";
-}
 
 export const AwaitContext = React.createContext<TrackedPromise | null>(null);
-if (__DEV__) {
-  AwaitContext.displayName = "Await";
-}
 
 export interface NavigateOptions {
   replace?: boolean;
@@ -136,10 +127,6 @@ export const NavigationContext = React.createContext<NavigationContextObject>(
   null!
 );
 
-if (__DEV__) {
-  NavigationContext.displayName = "Navigation";
-}
-
 interface LocationContextObject {
   location: Location;
   navigationType: NavigationType;
@@ -148,10 +135,6 @@ interface LocationContextObject {
 export const LocationContext = React.createContext<LocationContextObject>(
   null!
 );
-
-if (__DEV__) {
-  LocationContext.displayName = "Location";
-}
 
 export interface RouteContextObject {
   outlet: React.ReactElement | null;
@@ -165,12 +148,4 @@ export const RouteContext = React.createContext<RouteContextObject>({
   isDataRoute: false,
 });
 
-if (__DEV__) {
-  RouteContext.displayName = "Route";
-}
-
 export const RouteErrorContext = React.createContext<any>(null);
-
-if (__DEV__) {
-  RouteErrorContext.displayName = "RouteError";
-}

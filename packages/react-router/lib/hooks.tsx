@@ -365,41 +365,6 @@ export function useRoutesImpl(
   let parentPathnameBase = routeMatch ? routeMatch.pathnameBase : "/";
   let parentRoute = routeMatch && routeMatch.route;
 
-  if (__DEV__) {
-    // You won't get a warning about 2 different <Routes> under a <Route>
-    // without a trailing *, but this is a best-effort warning anyway since we
-    // cannot even give the warning unless they land at the parent route.
-    //
-    // Example:
-    //
-    // <Routes>
-    //   {/* This route path MUST end with /* because otherwise
-    //       it will never match /blog/post/123 */}
-    //   <Route path="blog" element={<Blog />} />
-    //   <Route path="blog/feed" element={<BlogFeed />} />
-    // </Routes>
-    //
-    // function Blog() {
-    //   return (
-    //     <Routes>
-    //       <Route path="post/:id" element={<Post />} />
-    //     </Routes>
-    //   );
-    // }
-    let parentPath = (parentRoute && parentRoute.path) || "";
-    warningOnce(
-      parentPathname,
-      !parentRoute || parentPath.endsWith("*"),
-      `You rendered descendant <Routes> (or called \`useRoutes()\`) at ` +
-        `"${parentPathname}" (under <Route path="${parentPath}">) but the ` +
-        `parent route path has no trailing "*". This means if you navigate ` +
-        `deeper, the parent won't match anymore and therefore the child ` +
-        `routes will never render.\n\n` +
-        `Please change the parent <Route path="${parentPath}"> to <Route ` +
-        `path="${parentPath === "/" ? "*" : `${parentPath}/*`}">.`
-    );
-  }
-
   let locationFromContext = useLocation();
 
   let location;
@@ -447,22 +412,6 @@ export function useRoutesImpl(
   debugger;
   let matches = matchRoutes(routes, { pathname: remainingPathname });
 
-  if (__DEV__) {
-    warning(
-      parentRoute || matches != null,
-      `No routes matched location "${location.pathname}${location.search}${location.hash}" `
-    );
-
-    warning(
-      matches == null ||
-        matches[matches.length - 1].route.element !== undefined ||
-        matches[matches.length - 1].route.Component !== undefined ||
-        matches[matches.length - 1].route.lazy !== undefined,
-      `Matched leaf route at location "${location.pathname}${location.search}${location.hash}" ` +
-        `does not have an element or Component. This means it will render an <Outlet /> with a ` +
-        `null value by default resulting in an "empty" page.`
-    );
-  }
   debugger;
 
   let renderedMatches = _renderMatches(
@@ -533,23 +482,6 @@ function DefaultErrorComponent() {
   let codeStyles = { padding: "2px 4px", backgroundColor: lightgrey };
 
   let devInfo = null;
-  if (__DEV__) {
-    console.error(
-      "Error handled by React Router default ErrorBoundary:",
-      error
-    );
-
-    devInfo = (
-      <>
-        <p>💿 Hey developer 👋</p>
-        <p>
-          You can provide a way better UX than this when your app throws errors
-          by providing your own <code style={codeStyles}>ErrorBoundary</code> or{" "}
-          <code style={codeStyles}>errorElement</code> prop on your route.
-        </p>
-      </>
-    );
-  }
 
   return (
     <>

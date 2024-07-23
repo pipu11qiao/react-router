@@ -38,9 +38,10 @@ export function shouldProcessLinkClick(
   target?: string
 ) {
   return (
+    // Ignore clicks with modifier keys
+    (// Let browser handle "target=_blank" etc.
     event.button === 0 && // Ignore everything but left clicks
-    (!target || target === "_self") && // Let browser handle "target=_blank" etc.
-    !isModifiedEvent(event) // Ignore clicks with modifier keys
+    (!target || target === "_self") && !isModifiedEvent(event))
   );
 }
 
